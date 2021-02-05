@@ -28,3 +28,23 @@ def listToTree(lst):
                 index += 1
             level_index += 1
     return root
+
+def treeToList(root : TreeNode):
+    if root == None: return []
+    ans = [root.val]
+    level = [root]
+    while len(level) > 0:
+        prev = level
+        level = []
+        for node in prev:
+            if(node.left != None):
+                ans.append(node.left.val)
+                level.append(node.left)
+            else:
+                ans.append(None)
+            if(node.right!= None):
+                ans.append(node.right.val)
+                level.append(node.right)
+            else:
+                ans.append(None)
+    return ans
